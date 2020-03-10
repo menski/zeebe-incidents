@@ -38,14 +38,14 @@ public class Main {
     workflowInstanceIncidentColumnFamily.whileTrue(
         (key, value) -> {
           IncidentRecord incidentRecord = state.getIncidentRecord(value.getValue());
-          System.out.println(incidentRecord.toJson());
+          System.out.println(key.getValue() + " : " + incidentRecord.toJson());
           return true;
         });
     System.out.println("Job incidents for partitions");
     jobIncidentColumnFamily.whileTrue(
         (key, value) -> {
           IncidentRecord incidentRecord = state.getIncidentRecord(value.getValue());
-          System.out.println(incidentRecord.toJson());
+          System.out.println(key.getValue() + " : " + incidentRecord.toJson());
           return true;
         });
 
