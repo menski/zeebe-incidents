@@ -14,19 +14,19 @@ public class Incident {
       final long key, final IncidentRecord incidentRecord, final DirectBuffer variables) {
     this.key = key;
     this.incidentRecord = incidentRecord;
+    incidentRecord.setErrorMessage(incidentRecord.getErrorMessage().replaceAll("\"", "'"));
     this.variables = MsgPackConverter.convertToJson(variables);
   }
 
   @Override
   public String toString() {
-    return "Incident{"
-        + "key="
+    return "{"
+        + "\"key\":"
         + key
-        + ", incidentRecord="
+        + ", \"incidentRecord\": "
         + incidentRecord
-        + ", variables='"
+        + ", \"variables\":"
         + variables
-        + '\''
         + '}';
   }
 }
